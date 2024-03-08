@@ -1,0 +1,30 @@
+ {
+   "context": "client",
+   "identifier": "com.pa.ferretmaster.spectator",
+   "display_name": "Spectator Tools",
+   "description": "A mod that adds various spectator tools/data",
+   "author": "Ferretmaster",
+   "version": "1.00",
+   "build": "114475",
+   "date": "2024-01-29",
+   "signature": "not yet implemented",
+
+   
+   "priority": 100,
+   "icon": "",
+    "scenes": {
+        "live_game": [
+            "coui://ui/mods/spectatorTools/live_game/effectFunctions.js",
+            "coui://ui/mods/spectatorTools/live_game/effectTesting.js"
+      
+        ],
+        "live_game_players": [
+            "coui://ui/mods/spectatorTools/live_game/armyData.js",
+            "coui://ui/mods/spectatorTools/live_game/armyFunctions.js"
+        ],
+        "live_game_time_bar": [
+            "coui://ui/mods/spectatorTools/live_game/time.js"
+        ]
+    },
+   "category": ["ui","titans", "in-game"]
+ }

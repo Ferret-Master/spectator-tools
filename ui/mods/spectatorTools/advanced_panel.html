@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta locns="live_game" />
+        <noloc><title>Live Game: Players</title></noloc>
+        <link href="bundle://boot/boot.css" rel="stylesheet" type="text/css" />
+        <link href="coui://ui/mods/spectatorTools/advanced_panel.css" rel="stylesheet" type="text/css" />
+        <script src="bundle://boot/boot.js" type="text/javascript"></script>
+        <script src="js/constants.js" type="text/javascript"></script>
+    </head>
+    <body class="body_panel" data-bind="visible: show" style="display: none">
+       
+
+        <!-- ko if: showSpectatorPanel -->
+        <div class="div_advanced_spectator_panel">
+            <div class="div_advanced_player_list_control">
+                <div class="div_advanced_player_list_control_cont div__advanced_spectator_list_control_cont">
+
+                    <!--- SPECTATORS BAR--->
+                  
+                    <div class="advanced_list_control_btn" data-bind="click: toggleAdvancedSpectatorPanel">
+                        <div style="display:  flex; ">
+                            <img data-bind="attr: { src: spectatorPanelToggleImage }" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ko if: showAdvancedSpectatorPanel -->
+            <div class="div_player_list_cont" style="max-width:none;">
+                <div class="div_player_item_list_cont">
+                    <div class="div_spectator_panel_buttons">
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('metal') }, css: { div_spectator_panel_button_active: showMetalData }">
+                            <loc>Metal</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('power') }, css: { div_spectator_panel_button_active: showPowerData } ">
+                            <loc>Power</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('fabs-factories') }, css: { div_spectator_panel_button_active: showFabFacData } ">
+                            <loc>Fabs/Factories</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('advancedArmy') }, css: { div_spectator_panel_button_active: showAdvancedArmyData } ">
+                            <loc>Army</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('land') }, css: { div_spectator_panel_button_active: showLandData } ">
+                            <loc>Land</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('air') }, css: { div_spectator_panel_button_active: showAirData } ">
+                            <loc>Air</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('naval') }, css: { div_spectator_panel_button_active: showNavalData } ">
+                            <loc>Naval</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('orbital') }, css: { div_spectator_panel_button_active: showOrbitalData } ">
+                            <loc>Orbital</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('offensive') }, css: { div_spectator_panel_button_active: showOffensiveData } ">
+                            <loc>Offensive</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('defensive') }, css: { div_spectator_panel_button_active: showDefensiveData } ">
+                            <loc>Defensive</loc>
+                        </div>
+                        <div class="div_spectator_panel_button" data-bind="click: function () { advancedSpectatorPanelMode('misc') }, css: { div_spectator_panel_button_active: showMiscData } ">
+                            <loc>Misc</loc>
+                        </div>
+                    </div>
+
+                    <table class="tbl_spectator_stats" style="font-family:'Sansation';">
+                        <tr style="text-transform:uppercase;">
+                            <th style="width: 30px; text-align: left;">
+                                <div class="btn_spectator_visibility btn_spectator_visibility_box" style="margin:0px 0px 0px 0px;" data-bind="click: visionSelectAll">
+                                    <img src="img/players_list_panel/icon_visibility_all.png" />
+                                </div>
+                            </th>
+                            <th style="width: 32px;">
+                            </th>
+                            <th style="width: 80px; padding: 0px 0px 0px 8px;"><loc>PLAYER</loc>
+                            </th>
+
+                            <!-- ko if: showMetalData -->
+                            <th class="div_spectator_headers div_generic_header">
+                                <loc>Metal</loc>
+                            </th>
+                            <th class="div_spectator_headers div_generic_header">
+                                <loc>Reclaim</loc>
+                            </th>
+                            <th class="div_spectator_headers div_generic_header">
+                                <loc>t1 Mex</loc>
+                            </th>
+                            <th class="div_spectator_headers div_generic_header">
+                                <loc>t2 Mex</loc>
+                            </th>
+                            <th class="div_spectator_headers div_generic_header">
+                                <loc>Reclaimed</loc>
+                            </th>
+                            <th class="div_spectator_headers div_generic_header">
+                                <loc>Floated</loc>
+                            </th>
+                            <!-- /ko -->
+
+                             <!-- ko if: showPowerData -->
+                             <th class="div_spectator_headers div_army_size_header">
+                                <loc>Power</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_mobile_value_header">
+                                <loc>Powergens</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_fabber_value_header">
+                                <loc>Other</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_factory_value_header">
+                                <loc>Radars</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_factory_value_header">
+                                <loc>Facs</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_factory_value_header">
+                                <loc>Fabs</loc>
+                            </th>
+                            <!-- /ko -->
+
+                             <!-- ko if: showFabFacData -->
+                             <th class="div_spectator_headers div_army_size_header">
+                                <loc>TotalFabs</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_mobile_value_header">
+                                <loc>T1Fabs</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_fabber_value_header">
+                                <loc>T2Fabs</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_factory_value_header">
+                                <loc>TotalFacs</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_factory_value_header">
+                                <loc>T1Facs</loc>
+                            </th>
+                            <th class="div_spectator_headers div_army_factory_value_header">
+                                <loc>T2Facs</loc>
+                            </th>
+                            <!-- /ko -->
+
+                        </tr>
+
+                        <!-- ko foreach: players -->
+                        <tr>
+                            <td>
+                                <div class="btn_spectator_visibility btn_spectator_visibility_box" data-bind="click: function () { $parent.visionSelect($index(), event); }, style: { color: $parent.playerVisionFlags()[$index()] ? 'White' : 'Gray' } ">
+                                    <!-- ko if: $parent.playerVisionFlags()[$index()] -->
+                                    <img src="img/players_list_panel/icon_visibility.png"/>
+                                    <!-- /ko -->
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn_player div_player_list_item_known" data-bind="click: function (data) { model.lookAtPlayerIfKnown(data.id) }, event: { contextmenu: function (data) { model.lookAtPlayerIfKnownInPIP(data.id) } }, css: { btn_player_known: model.isPlayerKnown($data.id) }">
+                                    <div class="div_player_icon" data-bind="css: { div_player_icon_known: model.isPlayerKnown($data.id) }">
+                                        <div class="fill player_masked" data-bind="style: { backgroundColor: color }"></div>
+                                        <div class="outline"">
+                                            <img src="coui://ui/main/game/live_game/img/players_list_panel/icon_player_outline.png" />
+                                        </div>
+                                    </div>
+                                     <!-- ko if: defeated -->
+                                    <div class="status status_annihilated">
+                                    </div>
+                                    <!-- /ko -->
+                                    <!-- ko if: disconnected -->
+                                    <div class="status status_disconnected">
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </td>
+                            <td class="div_name_header div_spectator_player_info">
+                                <div class="div_name_block">
+                                    <span data-bind="visible: ai" class="div_player_name ai"><noloc>AI: </noloc></span>
+                                    <!-- ko if: defeated -->
+                                    <span data-bind="text: name" class="color_negative"></span>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: defeated -->
+                                    <span data-bind="text: name" class="color_normal"></span>
+                                    <!-- /ko -->
+
+                                    <!-- ko with: economyHandicap -->
+                                    <!-- ko if: $data > 1.0 ||  $data < 1.0 -->
+                                    <div class="div_economy_handicap spectator_inline">
+                                        <div class="wrapper">
+                                            <span class="lbl_x">
+                                                <noloc>x</noloc>
+                                            </span>
+                                            <span class="value" data-bind="text: $data"></span>
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                    <!-- /ko -->
+                                </div>
+                            </td>
+
+                            <!-- ko if: $parent.showEconomyData -->
+                            <td class="div_generic_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: metalProductionStr, css: $parent.metalTextColorCSS($index())"></span>
+                            </td>
+                            <td class="div_generic_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: energyProductionStr, css: $parent.energyTextColorCSS($index())"></span>
+                            </td>
+                            <td class="div_generic_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: buildEfficiencyStr, css: $parent.efficiencyTextColorCSS($index())"></span>
+                            </td>
+                            <td class="div_generic_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: metalProductionStr, css: $parent.metalTextColorCSS($index())"></span>
+                            </td>
+                            <td class="div_generic_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: energyProductionStr, css: $parent.energyTextColorCSS($index())"></span>
+                            </td>
+                            <td class="div_generic_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: buildEfficiencyStr, css: $parent.efficiencyTextColorCSS($index())"></span>
+                            </td>
+                            <!-- /ko -->
+
+                            <!-- ko if: $parent.showArmyData -->
+                            <td class="div_army_size_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: armySize"></span>
+                            </td>
+                            <td class="div_army_mobile_value_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: mobileCount"></span>
+                            </td>
+                            <td class="div_army_fabber_value_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: fabberCount"></span>
+                            </td>
+                            <td class="div_army_factory_value_header div_spectator_player_info" style="padding-top: 5px;">
+                                <span data-bind="text: factoryCount"></span>
+                            </td>
+                            <!-- /ko -->
+
+                            
+
+                        </tr>
+                        <!-- /ko -->
+
+                    </table>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </body>
+</html>
